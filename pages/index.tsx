@@ -9,9 +9,7 @@ const Home: NextPage = () => {
         <title>NFT Drop</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="text-4xl text-red-500">
-        Welcome to the NFT drop challenge
-      </h1>
+      <h1 className="">Welcome to the NFT drop challenge</h1>
     </div>
   )
 }
