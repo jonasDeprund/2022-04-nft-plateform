@@ -21,7 +21,15 @@ function NFTDropPage() {
       {/* Right part */}
       <div>
         {/* Header */}
-        <h1>The Papafam NFT market place</h1>
+        <h1 className="w-52 cursor-pointer text-xl font-extralight sm:w-80">
+          The{' '}
+          <span className="font-extrabold underline decoration-pink-600/50">
+            {' '}
+            Papafam{' '}
+          </span>{' '}
+          NFT market place
+        </h1>
+        <button>Sign In</button>
         {/* Content */}
         {/* Mint button */}
       </div>
