@@ -19,17 +19,21 @@ function NFTDropPage() {
       </div>
 
       {/* Right part */}
-      <div>
+      <div className="flex flex-1 flex-col p-12">
         {/* Header */}
-        <h1 className="w-52 cursor-pointer text-xl font-extralight sm:w-80">
-          The{' '}
-          <span className="font-extrabold underline decoration-pink-600/50">
-            {' '}
-            Papafam{' '}
-          </span>{' '}
-          NFT market place
-        </h1>
-        <button>Sign In</button>
+        <header className="flex items-center justify-between">
+          <h1 className="w-52 cursor-pointer text-xl font-extralight sm:w-80">
+            The{' '}
+            <span className="font-extrabold underline decoration-pink-600/50">
+              {' '}
+              Papafam{' '}
+            </span>{' '}
+            NFT market place
+          </h1>
+          <button className="rounded-full bg-rose-400 px-4 py-2 text-xs font-bold text-white lg:py-3 lg:px-5 lg:text-base">
+            Sign In
+          </button>
+        </header>
         {/* Content */}
         {/* Mint button */}
       </div>
