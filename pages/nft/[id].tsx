@@ -1,4 +1,5 @@
 import React from 'react'
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
 import { useAddress, useDisconnect, useMetamask } from '@thirdweb-dev/react'
 
 function NFTDropPage() {
@@ -7,6 +8,8 @@ function NFTDropPage() {
   const address = useAddress()
   const disconnect = useDisconnect()
   // ---
+
+  console.log(address)
 
   return (
     <div className="flex h-screen flex-col lg:grid lg:grid-cols-10">
