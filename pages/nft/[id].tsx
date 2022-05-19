@@ -1,6 +1,13 @@
 import React from 'react'
+import { useAddress, useDisconnect, useMetamask } from '@thirdweb-dev/react'
 
 function NFTDropPage() {
+  // Auth
+  const connectWithMetamask = useMetamask()
+  const address = useAddress()
+  const disconnect = useDisconnect()
+  // ---
+
   return (
     <div className="flex h-screen flex-col lg:grid lg:grid-cols-10">
       {/* Left part */}
@@ -30,7 +37,10 @@ function NFTDropPage() {
             </span>{' '}
             NFT market place
           </h1>
-          <button className="rounded-full bg-rose-400 px-4 py-2 text-xs font-bold text-white lg:py-3 lg:px-5 lg:text-base">
+          <button
+            onClick={() => connectWithMetamask()}
+            className="rounded-full bg-rose-400 px-4 py-2 text-xs font-bold text-white lg:py-3 lg:px-5 lg:text-base"
+          >
             Sign In
           </button>
         </header>
@@ -48,7 +58,7 @@ function NFTDropPage() {
           <p className="pt-2 text-xl text-green-500">13 / 21 NFT's claim</p>
         </div>
         {/* Mint button */}
-        <button className="mt-10 h-16 w-full rounded-full bg-red-600 text-white">
+        <button className="mt-10 h-16 w-full rounded-full bg-red-600 font-bold text-white">
           Mint NFT (0.01) ETH
         </button>
       </div>
