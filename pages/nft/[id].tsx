@@ -1,4 +1,5 @@
 import React from 'react'
+import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
 import { useAddress, useDisconnect, useMetamask } from '@thirdweb-dev/react'
 
