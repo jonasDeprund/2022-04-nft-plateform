@@ -45,7 +45,7 @@ function NFTDropPage() {
             onClick={() => connectWithMetamask()}
             className="rounded-full bg-rose-400 px-4 py-2 text-xs font-bold text-white lg:py-3 lg:px-5 lg:text-base"
           >
-            Sign In
+            {address ? 'Signed Out' : 'Sign In'}
           </button>
         </header>
         <hr className="my-2 border" />
