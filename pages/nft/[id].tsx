@@ -20,7 +20,7 @@ function NFTDropPage() {
               <img src="https://links.papareact.com/8sg" alt="" />
             </div>
             <div className="sapce-y-2 p-5 text-center">
-              <h1 className="text-4xl font-bold text-white">Jojo Apes</h1>
+              <h1 className="text-4xl font-bold text-white">Jojo Apes new</h1>
               <h2 className="text-xl text-gray-300">A collection of Apes</h2>
             </div>
           </div>
