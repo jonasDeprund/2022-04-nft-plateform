@@ -7,3 +7,5 @@ export const config = {
   apiVersion: '2021-08-11', // or today's date for latest
   useCdn: process.env.NODE_ENV === 'production',
 }
+
+export const sanityClient = createClient(config)
