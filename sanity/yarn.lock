@@ -1839,10 +1839,10 @@
     date-fns "^2.16.1"
     lodash "^4.17.15"
 
-"@sanity/vision@^2.30.0":
-  version "2.30.0"
-  resolved "https://registry.npmjs.org/@sanity/vision/-/vision-2.30.0.tgz#b75c8d36ca897b85d55ef00bbefb0fd58b79cf75"
-  integrity sha512-YjH4FnwTjpELYBfuWt/Kw4eNPqdmtk8nV33jSMbfGX+AcAl2cJdp9AVy9AujgQHJHq5Au96ocZhg8Ns2Hx3lUA==
+"@sanity/vision@^2.30.1":
+  version "2.30.1"
+  resolved "https://registry.npmjs.org/@sanity/vision/-/vision-2.30.1.tgz#69a9862d4ba78e1b90976696e9f4e069b6affe8d"
+  integrity sha512-nxvYJD0QFGpOfssHmelhyc4awAmC1QOLROAFXa+cKP4v1ccq2QBA7ld7TpdDESawzLD75nqV72pRugEztentGg==
   dependencies:
     "@juggle/resize-observer" "^3.3.1"
     "@sanity/icons" "^1.2.6"
