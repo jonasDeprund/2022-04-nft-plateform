@@ -11,7 +11,7 @@ interface Props {
 const Home = ({ collections }: Props) => {
   // Hello
   return (
-    <div className="">
+    <div className="2xl:px-0min-h-screen mx-auto flex max-w-7xl flex-col px-10 py-20">
       <Head>
         <title>NFT Drop</title>
         <link rel="icon" href="/favicon.ico" />
@@ -24,11 +24,21 @@ const Home = ({ collections }: Props) => {
         </span>{' '}
         market place
       </h1>
-      <main>
-        <div>
+      <main className="bg-slate-100 p-10 shadow-xl shadow-rose-400/20">
+        <div className="2xl:grid-col-4 grid space-x-3 md:grid-cols-2 lg:grid-cols-3">
           {collections.map((collection) => (
-            <div>
-              <img src={urlFor(collection.mainImage).url()} alt="" />
+            <div className="flex cursor-pointer flex-col items-center transition-all duration-200 hover:scale-105">
+              <img
+                className="h-96 w-60 rounded-2xl object-cover"
+                src={urlFor(collection.mainImage).url()}
+                alt=""
+              />
+              <div className="p-5">
+                <h2 className="text-3xl">{collection.title}</h2>
+              </div>
+              <p className="mt-2 text-sm text-gray-400">
+                {collection.description}
+              </p>
             </div>
           ))}
         </div>
