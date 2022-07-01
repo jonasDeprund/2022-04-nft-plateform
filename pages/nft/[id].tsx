@@ -2,15 +2,16 @@ import React from 'react'
 import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
 import { useAddress, useDisconnect, useMetamask } from '@thirdweb-dev/react'
-import { GetServerSideProps } from 'next'
-import { sanityClient } from '../../sanity'
+import { sanityClient, urlFor } from '../../sanity'
 import { Collection } from '../../typings'
+import { url } from 'inspector'
+import { GetServerSideProps } from 'next'
 
 interface Props {
   collection: Collection
 }
 
-function NFTDropPage({collection}: Props) {
+function NFTDropPage({ collection }: Props) {
   // Auth
   const connectWithMetamask = useMetamask()
   const address = useAddress()
@@ -24,11 +25,19 @@ function NFTDropPage({collection}: Props) {
         <div className="flex flex-col items-center justify-center py-2 lg:min-h-screen">
           <div className="w-44 rounded-xl object-cover lg:h-96 lg:w-72">
             <div className="rounded-xl bg-gradient-to-br from-yellow-400 to-purple-600 p-2">
-              <img src="https://links.papareact.com/8sg" alt="" />
+              <img
+                className="w-44 rounded-xl object-cover lg:h-96 lg:w-72"
+                src={urlFor(collection.previewImage).url()}
+                alt=""
+              />
             </div>
             <div className="sapce-y-2 p-5 text-center">
-              <h1 className="text-4xl font-bold text-white">Jojo Apes new</h1>
-              <h2 className="text-xl text-gray-300">A collection of Apes</h2>
+              <h1 className="text-4xl font-bold text-white">
+                {collection.nftCollectionName}
+              </h1>
+              <h2 className="text-xl text-gray-300">
+                {collection.description}
+              </h2>
             </div>
           </div>
         </div>
@@ -64,11 +73,11 @@ function NFTDropPage({collection}: Props) {
         <div className="mt-10 flex flex-1 flex-col items-center space-y-6 text-center lg:justify-center lg:space-y-0">
           <img
             className="w-80 object-cover pb-10 lg:h-40"
-            src="https://links.papareact.com/bdy"
+            src={urlFor(collection.mainImage).url()}
             alt=""
           />
           <h1 className="text-3xl font-bold lg:text-5xl lg:font-extrabold">
-            The Jojo collection NFT
+            {collection.title}
           </h1>
           <p className="pt-2 text-xl text-green-500">13 / 21 NFT's claim</p>
         </div>
@@ -83,7 +92,7 @@ function NFTDropPage({collection}: Props) {
 
 export default NFTDropPage
 
-export const GetServerSideProps: GetServerSideProps = async ({params}) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const query = `*[_type == "collection" && slug.current == $id][0]{
     _id,
     title,
@@ -112,14 +121,14 @@ export const GetServerSideProps: GetServerSideProps = async ({params}) => {
     id: params?.id,
   })
 
-  if(!collection) {
+  if (!collection) {
     return {
       notFound: true,
     }
   }
-  return{
-    props{
+  return {
+    props: {
       collection,
-    }
+    },
   }
 }
