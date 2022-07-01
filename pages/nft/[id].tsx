@@ -2,8 +2,15 @@ import React from 'react'
 import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
 import { useAddress, useDisconnect, useMetamask } from '@thirdweb-dev/react'
+import { GetServerSideProps } from 'next'
+import { sanityClient } from '../../sanity'
+import { Collection } from '../../typings'
 
-function NFTDropPage() {
+interface Props {
+  collection: Collection
+}
+
+function NFTDropPage({collection}: Props) {
   // Auth
   const connectWithMetamask = useMetamask()
   const address = useAddress()
@@ -75,3 +82,44 @@ function NFTDropPage() {
 }
 
 export default NFTDropPage
+
+export const GetServerSideProps: GetServerSideProps = async ({params}) => {
+  const query = `*[_type == "collection" && slug.current == $id][0]{
+    _id,
+    title,
+    address,
+    description,
+    nftCollectionName,
+    mainImage{
+      asset
+    },
+    previewImage{
+      asset
+    },
+    slug{
+      current
+    },
+    creator->{
+      _id,
+      name,
+      address,
+      slug{
+        current
+      },
+    },
+  }`
+  const collection = await sanityClient.fetch(query, {
+    id: params?.id,
+  })
+
+  if(!collection) {
+    return {
+      notFound: true,
+    }
+  }
+  return{
+    props{
+      collection,
+    }
+  }
+}
