@@ -6,6 +6,7 @@ import { sanityClient, urlFor } from '../../sanity'
 import { Collection } from '../../typings'
 import { url } from 'inspector'
 import { GetServerSideProps } from 'next'
+import Link from 'next/link'
 
 interface Props {
   collection: Collection
@@ -47,14 +48,16 @@ function NFTDropPage({ collection }: Props) {
       <div className="flex flex-1 flex-col p-12 lg:col-span-6">
         {/* Header */}
         <header className="flex items-center justify-between">
-          <h1 className="w-52 cursor-pointer text-xl font-extralight sm:w-80">
-            The{' '}
-            <span className="font-extrabold underline decoration-pink-600/50">
-              {' '}
-              Papafam{' '}
-            </span>{' '}
-            NFT market place
-          </h1>
+          <Link href={'/'}>
+            <h1 className="w-52 cursor-pointer text-xl font-extralight sm:w-80">
+              The{' '}
+              <span className="font-extrabold underline decoration-pink-600/50">
+                {' '}
+                Papafam{' '}
+              </span>{' '}
+              NFT market place
+            </h1>
+          </Link>
           <button
             onClick={() => (address ? disconnect() : connectWithMetamask())}
             className="rounded-full bg-rose-400 px-4 py-2 text-xs font-bold text-white lg:py-3 lg:px-5 lg:text-base"
