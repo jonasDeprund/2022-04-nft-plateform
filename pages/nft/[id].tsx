@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ThirdwebSDK } from '@thirdweb-dev/sdk'
 import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react'
-import { useAddress, useDisconnect, useMetamask } from '@thirdweb-dev/react'
+import {
+  useAddress,
+  useDisconnect,
+  useMetamask,
+  useNFTDrop,
+} from '@thirdweb-dev/react'
 import { sanityClient, urlFor } from '../../sanity'
 import { Collection } from '../../typings'
 import { url } from 'inspector'
@@ -13,11 +18,25 @@ interface Props {
 }
 
 function NFTDropPage({ collection }: Props) {
+  // State
+  const [claimedSupply, setClaimedSupply] = useState<number>(0)
+  const [totalSupply, setTotalSupply] = useState<number>(0)
+  const nftDrop = useNFTDrop(collection.address)
   // Auth
   const connectWithMetamask = useMetamask()
   const address = useAddress()
   const disconnect = useDisconnect()
   // ---
+
+  useEffect(() => {
+    if (!nftDrop) return
+
+    const fetchNFTDropData = async () => {
+      const claimed = await nftDrop.getAllClaimed()
+    }
+
+    fetchNFTDropData()
+  }, [nftDrop])
 
   return (
     <div className="flex h-screen flex-col lg:grid lg:grid-cols-10">
